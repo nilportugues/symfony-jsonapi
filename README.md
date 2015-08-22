@@ -10,12 +10,42 @@ Symfony2 JSON-API Transformer Bundle
 
 ## Installation
 
-Use [Composer](https://getcomposer.org) to install the package:
+**Step 1: Download the Bundle**
 
-```json
+Open a command console, enter your project directory and execute the
+following command to download the latest stable version of this bundle:
+
+```bash
 $ composer require nilportugues/jsonapi-bundle
 ```
 
+This command requires you to have Composer installed globally, as explained
+in the [installation chapter](https://getcomposer.org/doc/00-intro.md)
+of the Composer documentation.
+
+**Step 2: Enable the Bundle**
+
+Then, enable the bundle by adding it to the list of registered bundles
+in the `app/AppKernel.php` file of your project:
+
+```php
+<?php
+// app/AppKernel.php
+
+// ...
+class AppKernel extends Kernel
+{
+    public function registerBundles()
+    {
+        $bundles = array(
+            // ...
+            new NilPortugues\Symfony2\JsonApiBundle\NilPortuguesSymfony2JsonApiBundle(),
+        );
+        // ...
+    }
+    // ...
+}
+```
 
 **Output:**
 
