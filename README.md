@@ -51,7 +51,7 @@ class AppKernel extends Kernel
 
 Mapping files should be located at the `app/config/serializer` directory. This directory must be created.
 
-It can be also be customized and placed where desired by editing `app/config/config.yml` file using the configuration file:
+It can be also be customized and placed elsewhere by editing the `app/config/config.yml` configuration file:
 
 ```yml
 # app/config/config.yml
