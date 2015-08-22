@@ -63,11 +63,11 @@ nilportugues_json_api:
 
 **Mapping files**
 
-The JSON-API transformer works by transforming an existing PHP object into its JSON representation. For each object, a mapping file is required.
+The JSON-API transformer works by transforming an existing PHP object into its JSON representation. For each object, a mapping file is required. 
 
 Mapping files **must** be placed in the mappings directory. The expected mapping file format is `.yml` and  will allow you to rename, hide and create links relating all of your data.
 
-For instance, here's a `Post` object :
+For instance, here's a quite complex `Post` object to demonstrate how it works:
 
 ```php
 $post = new Post(
@@ -196,6 +196,49 @@ mapping:
     friends: get_user_friends  ## @Route name
     comments: get_user_comments  ## @Route name
 ```
+
+
+## Outputing API Responses
+
+It is really easy, just get an instance of the `JsonApiSerializer` from the **Service Container** and pass the object to its `serialize()` method. Output will be valid JSON-API.
+
+Here's an example of a `Post` object being fetched from a Doctrine repository.
+
+Finally, a helper trait, `JsonApiResponseTrait` is provided to write fully compilant responses wrapping the PSR-7 Response objects provided by the original JSON API Transformer library.
+
+```
+<?php
+namespace AppBundle\Controller;
+
+use NilPortugues\Symfony2\JsonApiBundle\Serializer\JsonApiResponseTrait;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+class PostController extends Controller
+{
+    use JsonApiResponseTrait;
+
+    /**
+     * @\Symfony\Component\Routing\Annotation\Route("/post/{postId}", name="get_post")
+     *
+     * @param $postId
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getPostAction($postId)
+    {
+        $post = $this->get('doctrine.post_repository)->find($postId);
+        
+        $serializer = $this->get('nil_portugues.serializer.json_api_serializer');
+
+        /** @var \NilPortugues\Api\JsonApi\JsonApiTransformer $transformer */
+        $transformer = $serializer->getTransformer();
+        $transformer->setSelfUrl($this->generateUrl('get_post', ['postId' => $postId], true));
+        $transformer->setNextUrl($this->generateUrl('get_post', ['postId' => $postId+1], true));
+
+        return $this->response($serializer->serialize($post));
+    }
+} 
+```
+
 
 **Output:**
 
