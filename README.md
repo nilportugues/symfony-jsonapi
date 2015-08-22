@@ -225,7 +225,7 @@ class PostController extends Controller
      */
     public function getPostAction($postId)
     {
-        $post = $this->get('doctrine.post_repository)->find($postId);
+        $post = $this->get('doctrine.post_repository')->find($postId);
         
         $serializer = $this->get('nil_portugues.serializer.json_api_serializer');
 
