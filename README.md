@@ -13,7 +13,7 @@ Symfony2 JSON-API Transformer Bundle
 Use [Composer](https://getcomposer.org) to install the package:
 
 ```json
-$ composer require nilportugues/json-api
+$ composer require nilportugues/jsonapi-bundle
 ```
 
 
