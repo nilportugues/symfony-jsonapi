@@ -48,6 +48,7 @@ class AppKernel extends Kernel
 ### Creating the mappings
 
 **Mapping directory**
+
 Mapping files should be located at the `app/config/serializer` directory. This directory must be created.
 
 It can be also be customized and placed where desired by editing `app/config/config.yml` file using the configuration file:
@@ -61,6 +62,7 @@ nilportugues_json_api:
 ```
 
 **Mapping files**
+
 The JSON-API transformer works by transforming an existing PHP object into its JSON representation. For each object, a mapping file is required.
 
 Mapping files **must** be placed in the mappings directory. The expected mapping file format is `.yml` and  will allow you to rename, hide and create links relating all of your data.
@@ -90,7 +92,110 @@ For instance, here's a `Post` object :
         );
 ```
 
+And the series of mapping files required:
 
+```yml
+# app/config/serializer/acme_domain_dummy_post.yml
+
+mapping:
+  class: Acme\Domain\Dummy\Post
+  alias: Message
+  aliased_properties:
+    author: author
+    title: headline
+    content: body
+  hide_properties: []
+  id_properties:
+    - postId
+  urls:
+    self: get_post ## @Route name
+    comments: get_post_comments ## @Route name
+  relationships:
+    author:
+      related: get_post_author ## @Route name
+      self: get_post_author_relationship  ## @Route name
+```
+
+```yml
+# app/config/serializer/acme_domain_dummy_value_object_post_id.yml
+
+mapping:
+  class: Acme\Domain\Dummy\ValueObject\PostId
+  aliased_properties: []
+  hide_properties: []
+  id_properties:
+  - postId
+  urls:
+    self: get_post  ## @Route name
+  relationships:
+    comment:
+      self: get_post_comments_relationship  ## @Route name
+```
+
+
+```yml
+# app/config/serializer/acme_domain_dummy_comment.yml
+
+mapping:
+  class: Acme\Domain\Dummy\Comment
+  aliased_properties: []
+  hide_properties: []
+  id_properties:
+    - commentId
+  urls:
+    self: get_comment ## @Route name
+  relationships:
+    post:
+      self: get_post_comments_relationship ## @Route name
+```
+
+```yml
+# app/config/serializer/acme_domain_dummy_value_object_comment_id.yml
+
+mapping:
+  class: Acme\Domain\Dummy\ValueObject\CommentId
+  aliased_properties: []
+  hide_properties: []
+  id_properties:
+    - commentId
+  urls:
+    self: get_comment ## @Route name
+  relationships:
+    post:
+      self: get_post_comments_relationship ## @Route name
+```
+
+
+```yml
+# app/config/serializer/acme_domain_dummy_user.yml
+
+mapping:
+  class: Acme\Domain\Dummy\User
+  aliased_properties: []
+  hide_properties: []
+  id_properties:
+  - userId
+  urls:
+    self: get_user
+    friends: get_user_friends  ## @Route name
+    comments: get_user_comments  ## @Route name
+```
+
+
+```yml
+# app/config/serializer/acme_domain_dummy_value_object_user_id.yml
+
+mapping:
+  class: Acme\Domain\Dummy\ValueObject\UserId
+  aliased_properties: []
+  hide_properties: []
+  id_properties:
+  - userId
+  urls:
+    self: get_user  ## @Route name
+    friends: get_user_friends  ## @Route name
+    comments: get_user_comments  ## @Route name
+```
 
 **Output:**
 
