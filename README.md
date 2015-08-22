@@ -8,6 +8,14 @@ Symfony2 JSON-API Transformer Bundle
 [![License](https://poser.pugx.org/nilportugues/jsonapi-bundle/license)](https://packagist.org/packages/nilportugues/jsonapi-bundle) 
 
 
+## Installation
+
+Use [Composer](https://getcomposer.org) to install the package:
+
+```json
+$ composer require nilportugues/json-api
+```
+
 
 **Output:**
 
