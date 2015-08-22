@@ -344,14 +344,6 @@ Content-type: application/vnd.api+json
             "href": "http://example.com/posts/10"
         }
     },
-    "meta": {
-        "author": [
-            {
-                "name": "Nil Portugués Calderó",
-                "email": "contact@nilportugues.com"
-            }
-        ]
-    },
     "jsonapi": {
         "version": "1.0"
     }
