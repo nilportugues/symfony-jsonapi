@@ -1,8 +1,8 @@
 Symfony2 JSON-API Transformer Bundle
 =========================================
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nilportugues/jsonapi-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nilportugues/jsonapi-bundle/?branch=master)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/3269f12e-a707-462a-bef5-22e5ed522e8e/mini.png)](https://insight.sensiolabs.com/projects/3269f12e-a707-462a-bef5-22e5ed522e8e) 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nilportugues/symfony2-jsonapi-transformer/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nilportugues/symfony2-jsonapi-transformer/?branch=master)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/3269f12e-a707-462a-bef5-22e5ed522e8e/mini.png?)](https://insight.sensiolabs.com/projects/3269f12e-a707-462a-bef5-22e5ed522e8e) 
 [![Latest Stable Version](https://poser.pugx.org/nilportugues/jsonapi-bundle/v/stable)](https://packagist.org/packages/nilportugues/jsonapi-bundle)
 [![Total Downloads](https://poser.pugx.org/nilportugues/jsonapi-bundle/downloads)](https://packagist.org/packages/nilportugues/jsonapi-bundle) 
 [![License](https://poser.pugx.org/nilportugues/jsonapi-bundle/license)](https://packagist.org/packages/nilportugues/jsonapi-bundle) 
