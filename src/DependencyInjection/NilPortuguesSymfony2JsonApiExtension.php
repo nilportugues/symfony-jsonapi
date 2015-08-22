@@ -2,7 +2,6 @@
 
 namespace NilPortugues\Symfony2\JsonApiBundle\DependencyInjection;
 
-use NilPortugues\Api\Mapping\Mapper;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
