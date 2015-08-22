@@ -206,7 +206,7 @@ Here's an example of a `Post` object being fetched from a Doctrine repository.
 
 Finally, a helper trait, `JsonApiResponseTrait` is provided to write fully compilant responses wrapping the PSR-7 Response objects provided by the original JSON API Transformer library.
 
-```
+```php
 <?php
 namespace AppBundle\Controller;
 
