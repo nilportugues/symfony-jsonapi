@@ -36,7 +36,6 @@ This library attempts to comply with [PSR-1](http://www.php-fig.org/psr/psr-1/),
 If you notice compliance oversights, please send a patch via [Pull Request](https://github.com/nilportugues/symfony2-jsonapi-transformer/pulls).
 
 
-<br>
 ## Contribute
 
 Contributions to the package are always welcome!
@@ -45,7 +44,6 @@ Contributions to the package are always welcome!
 * You can grab the source code at the package's [Git repository](https://github.com/nilportugues/symfony2-jsonapi-transformer).
 
 
-<br>
 ## Support
 
 Get in touch with me using one of the following means:
@@ -55,7 +53,6 @@ Get in touch with me using one of the following means:
  - Using Gitter: [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/nilportugues/symfony2-jsonapi-transformer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 
-<br>
 ## Authors
 
 * [Nil Portugués Calderó](http://nilportugues.com)
