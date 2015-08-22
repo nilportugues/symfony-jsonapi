@@ -19,9 +19,6 @@ following command to download the latest stable version of this bundle:
 $ composer require nilportugues/jsonapi-bundle
 ```
 
-This command requires you to have Composer installed globally, as explained
-in the [installation chapter](https://getcomposer.org/doc/00-intro.md)
-of the Composer documentation.
 
 **Step 2: Enable the Bundle**
 
@@ -31,7 +28,6 @@ in the `app/AppKernel.php` file of your project:
 ```php
 <?php
 // app/AppKernel.php
-
 // ...
 class AppKernel extends Kernel
 {
@@ -46,6 +42,55 @@ class AppKernel extends Kernel
     // ...
 }
 ```
+
+## Usage
+
+### Creating the mappings
+
+**Mapping directory**
+Mapping files should be located at the `app/config/serializer` directory. This directory must be created.
+
+It can be also be customized and placed where desired by editing `app/config/config.yml` file using the configuration file:
+
+```yml
+# app/config/config.yml
+
+nilportugues_json_api:
+    mappings: "%kernel.root_dir%/config/serializer/"
+
+```
+
+**Mapping files**
+The JSON-API transformer works by transforming an existing PHP object into its JSON representation. For each object, a mapping file is required.
+
+Mapping files **must** be placed in the mappings directory. The expected mapping file format is `.yml` and  will allow you to rename, hide and create links relating all of your data.
+
+For instance, here's a `Post` object :
+
+```php
+  $post = new Post(
+            new PostId(9),
+            'Hello World',
+            'Your first post',
+            new User(
+                new UserId(1),
+                'Post Author'
+            ),
+            [
+                new Comment(
+                    new CommentId(1000),
+                    'Have no fear, sers, your king is safe.',
+                    new User(new UserId(2), 'Barristan Selmy'),
+                    [
+                        'created_at' => (new DateTime('2015/07/18 12:13:00'))->format('c'),
+                        'accepted_at' => (new DateTime('2015/07/19 00:00:00'))->format('c'),
+                    ]
+                ),
+            ]
+        );
+```
+
+
 
 **Output:**
 
