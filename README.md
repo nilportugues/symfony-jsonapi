@@ -7,6 +7,20 @@ Symfony2 JSON-API Transformer Bundle
 [![Total Downloads](https://poser.pugx.org/nilportugues/jsonapi-bundle/downloads)](https://packagist.org/packages/nilportugues/jsonapi-bundle) 
 [![License](https://poser.pugx.org/nilportugues/jsonapi-bundle/license)](https://packagist.org/packages/nilportugues/jsonapi-bundle) 
 
+- [Installation](#installation)
+- [Usage](#usage)
+    - [Creating the mappings](#creating-the-mappings)
+- [Outputing API Responses](#outputing-api-responses)
+    - [JSON API Requests](#request-objects)
+    - [JSON API Responses](#response-objects-jsonapiresponsetrait)
+- [Integration with NelmioApiDocBundleBundle](#integration-with-nelmioapidocbundlebundle)
+- [Quality](#quality)
+- [Contribute](#contribute)
+- [Support](#support)
+- [Authors](#authors)
+- [License](#license)
+ 
+
 
 ## Installation
 
@@ -418,7 +432,7 @@ The following `JsonApiResponseTrait` methods are provided to return the right he
 ```    
 ## Integration with NelmioApiDocBundleBundle
 
-The NelmioApiDocBundle is a very well known bundle used to document APIs. Integration with the current bundle is terrible easy. 
+The [NelmioApiDocBundle](https://github.com/nelmio/NelmioApiDocBundle/blob/master/Resources/doc/index.md) is a very well known bundle used to document APIs. Integration with the current bundle is terrible easy. 
 
 Here's an example following the `PostContoller::getPostAction()` provided before:
 
