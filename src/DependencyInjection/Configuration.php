@@ -12,7 +12,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class Configuration implements ConfigurationInterface
 {
-    const DEFAULT_PATH = '%kernel.root_dir%/config/serializer/json_api/';
+    const DEFAULT_PATH = '%kernel.root_dir%/config/serializer/';
     /**
      * {@inheritdoc}
      */
