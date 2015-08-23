@@ -440,12 +440,12 @@ Here's an example following the `PostContoller::getPostAction()` provided before
 <?php
 namespace AppBundle\Controller;
 
-use NilPortugues\Symfony2\HalJsonBundle\Serializer\HalJsonResponseTrait;
+use NilPortugues\Symfony2\JsonApiBundle\Serializer\JsonApiResponseTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PostController extends Controller
 {
-    use HalJsonResponseTrait;
+    use JsonApiResponseTrait;
 
     /**
      * Get a Post by its identifier. Will return Post, Comments and User data.
