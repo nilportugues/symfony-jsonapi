@@ -416,6 +416,52 @@ The following `JsonApiResponseTrait` methods are provided to return the right he
     private function response($json);
     private function unsupportedActionResponse($json);
 ```    
+## Integration with NelmioApiDocBundleBundle
+
+The NelmioApiDocBundle is a very well known bundle used to document APIs. Integration with the current bundle is terrible easy. 
+
+Here's an example following the `PostContoller::getPostAction()` provided before:
+
+```php
+<?php
+namespace AppBundle\Controller;
+
+use NilPortugues\Symfony2\HalJsonBundle\Serializer\HalJsonResponseTrait;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+class PostController extends Controller
+{
+    use HalJsonResponseTrait;
+
+    /**
+     * Get a Post by its identifier. Will return Post, Comments and User data.
+     *
+     * @Nelmio\ApiDocBundle\Annotation\ApiDoc(
+     *  resource=true,
+     *  description="Get a Post by its unique id",
+     * )
+     *
+     * @Symfony\Component\Routing\Annotation\Route("/post/{postId}", name="get_post")
+     * @Sensio\Bundle\FrameworkExtraBundle\Configuration\Method({"GET"})
+     *
+     * @param $postId
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getPostAction($postId)
+    {
+        $post = $this->get('doctrine.post_repository')->find($postId);
+        
+        $serializer = $this->get('nil_portugues.serializer.json_api_serializer');
+
+        /** @var \NilPortugues\Api\JsonApi\JsonApiTransformer $transformer */
+        $transformer = $serializer->getTransformer();
+        $transformer->setSelfUrl($this->generateUrl('get_post', ['postId' => $postId], true));
+        $transformer->setNextUrl($this->generateUrl('get_post', ['postId' => $postId+1], true));
+
+        return $this->response($serializer->serialize($post));
+    }
+} 
+```
 
 
 ## Quality
