@@ -7,6 +7,15 @@ use Symfony\Bridge\PsrHttpMessage\Factory\HttpFoundationFactory;
 trait JsonApiResponseTrait
 {
     /**
+     * @param \Psr\Http\Message\ResponseInterface $response
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    protected function addHeaders(\Psr\Http\Message\ResponseInterface $response)
+    {
+        return $response;
+    }
+    
+    /**
      * @param string $json
      *
      * @return \Symfony\Component\HttpFoundation\Response
@@ -14,7 +23,7 @@ trait JsonApiResponseTrait
     private function errorResponse($json)
     {
         return (new HttpFoundationFactory())
-            ->createResponse(new \NilPortugues\Api\JsonApi\Http\Message\ErrorResponse($json));
+            ->createResponse($this->addHeaders(new \NilPortugues\Api\JsonApi\Http\Message\ErrorResponse($json)));
     }
 
     /**
@@ -25,7 +34,7 @@ trait JsonApiResponseTrait
     private function resourceCreatedResponse($json)
     {
         return (new HttpFoundationFactory())
-            ->createResponse(new \NilPortugues\Api\JsonApi\Http\Message\ResourceCreatedResponse($json));
+            ->createResponse($this->addHeaders(new \NilPortugues\Api\JsonApi\Http\Message\ResourceCreatedResponse($json)));
     }
 
     /**
@@ -36,7 +45,7 @@ trait JsonApiResponseTrait
     private function resourceDeletedResponse($json)
     {
         return (new HttpFoundationFactory())
-            ->createResponse(new \NilPortugues\Api\JsonApi\Http\Message\ResourceDeletedResponse($json));
+            ->createResponse($this->addHeaders(new \NilPortugues\Api\JsonApi\Http\Message\ResourceDeletedResponse($json)));
     }
 
     /**
@@ -47,7 +56,7 @@ trait JsonApiResponseTrait
     private function resourceNotFoundResponse($json)
     {
         return (new HttpFoundationFactory())
-            ->createResponse(new \NilPortugues\Api\JsonApi\Http\Message\ResourceNotFoundResponse($json));
+            ->createResponse($this->addHeaders(new \NilPortugues\Api\JsonApi\Http\Message\ResourceNotFoundResponse($json)));
     }
 
     /**
@@ -58,7 +67,7 @@ trait JsonApiResponseTrait
     private function resourcePatchErrorResponse($json)
     {
         return (new HttpFoundationFactory())
-            ->createResponse(new \NilPortugues\Api\JsonApi\Http\Message\ResourcePatchErrorResponse($json));
+            ->createResponse($this->addHeaders(new \NilPortugues\Api\JsonApi\Http\Message\ResourcePatchErrorResponse($json)));
     }
 
     /**
@@ -69,7 +78,7 @@ trait JsonApiResponseTrait
     private function resourcePostErrorResponse($json)
     {
         return (new HttpFoundationFactory())
-            ->createResponse(new \NilPortugues\Api\JsonApi\Http\Message\ResourcePostErrorResponse($json));
+            ->createResponse($this->addHeaders(new \NilPortugues\Api\JsonApi\Http\Message\ResourcePostErrorResponse($json)));
     }
 
     /**
@@ -80,7 +89,7 @@ trait JsonApiResponseTrait
     private function resourceProcessingResponse($json)
     {
         return (new HttpFoundationFactory())
-            ->createResponse(new \NilPortugues\Api\JsonApi\Http\Message\ResourceProcessingResponse($json));
+            ->createResponse($this->addHeaders(new \NilPortugues\Api\JsonApi\Http\Message\ResourceProcessingResponse($json)));
     }
 
     /**
@@ -91,7 +100,7 @@ trait JsonApiResponseTrait
     private function resourceUpdatedResponse($json)
     {
         return (new HttpFoundationFactory())
-            ->createResponse(new \NilPortugues\Api\JsonApi\Http\Message\ResourceUpdatedResponse($json));
+            ->createResponse($this->addHeaders(new \NilPortugues\Api\JsonApi\Http\Message\ResourceUpdatedResponse($json)));
     }
 
     /**
@@ -102,7 +111,7 @@ trait JsonApiResponseTrait
     private function response($json)
     {
         return (new HttpFoundationFactory())
-            ->createResponse(new \NilPortugues\Api\JsonApi\Http\Message\Response($json));
+            ->createResponse($this->addHeaders(new \NilPortugues\Api\JsonApi\Http\Message\Response($json)));
     }
 
     /**
@@ -113,6 +122,6 @@ trait JsonApiResponseTrait
     private function unsupportedActionResponse($json)
     {
         return (new HttpFoundationFactory())
-            ->createResponse(new \NilPortugues\Api\JsonApi\Http\Message\UnsupportedActionResponse($json));
+            ->createResponse($this->addHeaders(new \NilPortugues\Api\JsonApi\Http\Message\UnsupportedActionResponse($json)));
     }
 }
