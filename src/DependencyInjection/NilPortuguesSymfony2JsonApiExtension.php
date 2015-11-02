@@ -36,14 +36,14 @@ class NilPortuguesSymfony2JsonApiExtension extends Extension
      */
     private function setMappings(ContainerBuilder $container, $config)
     {
-        if (true === file_exists($config['mappings'])) {
+        if (true === \file_exists($config['mappings'])) {
             $finder = new Finder();
             $finder->files()->in($config['mappings']);
             $loadedMappings = [];
 
             foreach ($finder as $file) {
                 /* @var \Symfony\Component\Finder\SplFileInfo $file */
-                $mapping = file_get_contents($file->getPathname());
+                $mapping = \file_get_contents($file->getPathname());
                 $mapping = Yaml::parse($mapping);
                 $loadedMappings[] = $mapping['mapping'];
             }

@@ -8,6 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace NilPortugues\Symfony2\JsonApiBundle\Serializer;
 
 use NilPortugues\Api\JsonApi\JsonApiTransformer;
@@ -104,18 +105,18 @@ class JsonApiSerializer extends DeepCopySerializer
                 }
             } catch (\Exception $e) {
                 throw new \RuntimeException(
-                   sprintf('Route \'%s\' has not been defined as a Symfony route.', $routeNameFromMappingFile)
+                   \sprintf('Route \'%s\' has not been defined as a Symfony route.', $routeNameFromMappingFile)
                );
             }
 
-            preg_match_all('/{(.*?)}/', $route->getPath(), $matches);
+            \preg_match_all('/{(.*?)}/', $route->getPath(), $matches);
 
             $pattern = [];
             if (!empty($matches)) {
-                $pattern = array_combine($matches[1], $matches[0]);
+                $pattern = \array_combine($matches[1], $matches[0]);
             }
 
-            return urldecode($router->generate($routeNameFromMappingFile, $pattern, true));
+            return \urldecode($router->generate($routeNameFromMappingFile, $pattern, true));
         }
 
         return (string) $routeNameFromMappingFile;
