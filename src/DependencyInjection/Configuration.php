@@ -1,6 +1,6 @@
 <?php
 
-namespace NilPortugues\Symfony2\JsonApiBundle\DependencyInjection;
+namespace NilPortugues\Symfony\JsonApiBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

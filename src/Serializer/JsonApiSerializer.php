@@ -8,8 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
-namespace NilPortugues\Symfony2\JsonApiBundle\Serializer;
+namespace NilPortugues\Symfony\JsonApiBundle\Serializer;
 
 use NilPortugues\Api\JsonApi\JsonApiTransformer;
 use NilPortugues\Api\Mapping\Mapping;

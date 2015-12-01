@@ -1,6 +1,6 @@
 <?php
 
-namespace NilPortugues\Symfony2\JsonApiBundle\Serializer;
+namespace NilPortugues\Symfony\JsonApiBundle\Serializer;
 
 use Symfony\Bridge\PsrHttpMessage\Factory\HttpFoundationFactory;
 
