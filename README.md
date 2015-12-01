@@ -2,7 +2,7 @@ Symfony JSON-API Transformer Bundle
 =========================================
 For Symfony 2 and Symfony 3
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nilportugues/symfony2-jsonapi-transformer/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nilportugues/symfony2-jsonapi-transformer/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nilportugues/Symfony-jsonapi-transformer/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nilportugues/Symfony-jsonapi-transformer/?branch=master)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/3269f12e-a707-462a-bef5-22e5ed522e8e/mini.png?)](https://insight.sensiolabs.com/projects/3269f12e-a707-462a-bef5-22e5ed522e8e) 
 [![Latest Stable Version](https://poser.pugx.org/nilportugues/jsonapi-bundle/v/stable)](https://packagist.org/packages/nilportugues/jsonapi-bundle)
 [![Total Downloads](https://poser.pugx.org/nilportugues/jsonapi-bundle/downloads)](https://packagist.org/packages/nilportugues/jsonapi-bundle) 
@@ -50,7 +50,7 @@ class AppKernel extends Kernel
     {
         $bundles = array(
             // ...
-            new NilPortugues\Symfony2\JsonApiBundle\NilPortuguesSymfony2JsonApiBundle(),
+            new NilPortugues\Symfony\JsonApiBundle\NilPortuguesSymfonyJsonApiBundle(),
         );
         // ...
     }
@@ -225,7 +225,7 @@ Finally, a helper trait, `JsonApiResponseTrait` is provided to write fully compi
 <?php
 namespace AppBundle\Controller;
 
-use NilPortugues\Symfony2\JsonApiBundle\Serializer\JsonApiResponseTrait;
+use NilPortugues\Symfony\JsonApiBundle\Serializer\JsonApiResponseTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PostController extends Controller
@@ -441,7 +441,7 @@ Here's an example following the `PostContoller::getPostAction()` provided before
 <?php
 namespace AppBundle\Controller;
 
-use NilPortugues\Symfony2\JsonApiBundle\Serializer\JsonApiResponseTrait;
+use NilPortugues\Symfony\JsonApiBundle\Serializer\JsonApiResponseTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PostController extends Controller
@@ -511,15 +511,15 @@ To run the PHPUnit tests at the command line, go to the tests directory and issu
 
 This library attempts to comply with [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http://www.php-fig.org/psr/psr-2/), [PSR-4](http://www.php-fig.org/psr/psr-4/) and [PSR-7](http://www.php-fig.org/psr/psr-7/).
 
-If you notice compliance oversights, please send a patch via [Pull Request](https://github.com/nilportugues/symfony2-jsonapi-transformer/pulls).
+If you notice compliance oversights, please send a patch via [Pull Request](https://github.com/nilportugues/Symfony-jsonapi-transformer/pulls).
 
 
 ## Contribute
 
 Contributions to the package are always welcome!
 
-* Report any bugs or issues you find on the [issue tracker](https://github.com/nilportugues/symfony2-jsonapi-transformer/issues/new).
-* You can grab the source code at the package's [Git repository](https://github.com/nilportugues/symfony2-jsonapi-transformer).
+* Report any bugs or issues you find on the [issue tracker](https://github.com/nilportugues/Symfony-jsonapi-transformer/issues/new).
+* You can grab the source code at the package's [Git repository](https://github.com/nilportugues/Symfony-jsonapi-transformer).
 
 
 ## Support
@@ -527,14 +527,14 @@ Contributions to the package are always welcome!
 Get in touch with me using one of the following means:
 
  - Emailing me at <contact@nilportugues.com>
- - Opening an [Issue](https://github.com/nilportugues/symfony2-jsonapi-transformer/issues/new)
- - Using Gitter: [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/nilportugues/symfony2-jsonapi-transformer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+ - Opening an [Issue](https://github.com/nilportugues/Symfony-jsonapi-transformer/issues/new)
+ - Using Gitter: [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/nilportugues/Symfony-jsonapi-transformer?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 
 ## Authors
 
 * [Nil Portugués Calderó](http://nilportugues.com)
-* [The Community Contributors](https://github.com/nilportugues/symfony2-jsonapi-transformer/graphs/contributors)
+* [The Community Contributors](https://github.com/nilportugues/Symfony-jsonapi-transformer/graphs/contributors)
 
 
 ## License
