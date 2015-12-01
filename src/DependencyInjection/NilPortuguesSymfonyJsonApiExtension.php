@@ -1,6 +1,6 @@
 <?php
 
-namespace NilPortugues\Symfony2\JsonApiBundle\DependencyInjection;
+namespace NilPortugues\Symfony\JsonApiBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -15,7 +15,7 @@ use Symfony\Component\Yaml\Yaml;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class NilPortuguesSymfony2JsonApiExtension extends Extension
+class NilPortuguesSymfonyJsonApiExtension extends Extension
 {
     /**
      * {@inheritdoc}
