@@ -6,10 +6,10 @@ services:
     nil_portugues.api.json_api.json_api_transformer:
          class: NilPortugues\Api\JsonApi\JsonApiTransformer
          arguments:
-            - @nil_portugues.api.mapping.mapper
+            - "@nil_portugues.api.mapping.mapper"
 
     nil_portugues.serializer.json_api_serializer:
          class: NilPortugues\Symfony2\JsonApiBundle\Serializer\JsonApiSerializer
          arguments:
-            - @nil_portugues.api.json_api.json_api_transformer
-            - @router
+            - "@nil_portugues.api.json_api.json_api_transformer"
+            - "@router"
