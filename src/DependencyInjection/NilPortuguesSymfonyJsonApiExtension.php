@@ -36,26 +36,54 @@ class NilPortuguesSymfonyJsonApiExtension extends Extension
      */
     private function setMappings(ContainerBuilder $container, $config)
     {
-        if (true === \file_exists($config['mappings'])) {
-            $finder = new Finder();
-            $finder->files()->in($config['mappings']);
-            $loadedMappings = [];
+        $definition = new Definition();
+        $definition->setClass('NilPortugues\Api\Mapping\Mapper');
+        $args = $this->resolveMappings($container, $config['mappings']);
+        $definition->setArguments($args);
+        $definition->setLazy(true);
 
-            foreach ($finder as $file) {
-                /* @var \Symfony\Component\Finder\SplFileInfo $file */
-                $mapping = \file_get_contents($file->getPathname());
-                $mapping = Yaml::parse($mapping);
-                $loadedMappings[] = $mapping['mapping'];
+        $container->setDefinition('nil_portugues.api.mapping.mapper', $definition);
+    }
+
+    private function resolveMappings(ContainerBuilder $container, $mappings)
+    {
+        $loadedMappings = [];
+
+        foreach ($mappings as $mapping) {
+
+            if (0 === strpos($mapping, '@')) {
+                $name = substr($mapping, 1, strpos($mapping, '/') - 1);
+
+                $dir = $this->resolveBundle($container, $name);
+                $mapping = str_replace('@'.$name, $dir, $mapping);
             }
 
-            $definition = new Definition();
-            $definition->setClass('NilPortugues\Api\Mapping\Mapper');
-            $args = array($loadedMappings);
-            $definition->setArguments($args);
-            $definition->setLazy(true);
-
-            $container->setDefinition('nil_portugues.api.mapping.mapper', $definition);
+            if (true === \file_exists($mapping)) {
+                $finder = new Finder();
+                $finder->files()->in($mapping);
+                foreach ($finder as $file) {
+                    /* @var \Symfony\Component\Finder\SplFileInfo $file */
+                    $mapping = \file_get_contents($file->getPathname());
+                    $mapping = Yaml::parse($mapping);
+                    $loadedMappings[] = $mapping['mapping'];
+                }
+            }
         }
+
+        return [$loadedMappings];
+    }
+
+    private function resolveBundle(ContainerBuilder $container, $name)
+    {
+        $bundles = $container->getParameter('kernel.bundles');
+
+        if (!isset($bundles[$name])) {
+            return null;
+        }
+
+        $class = $bundles[$name];
+        $refClass = new \ReflectionClass($class);
+        return dirname($refClass->getFileName());
     }
 
     /**

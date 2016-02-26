@@ -22,10 +22,11 @@ class Configuration implements ConfigurationInterface
 
         $treeBuilder
             ->root('nilportugues_json_api')
-                ->children()
-                    ->scalarNode('mappings')->isRequired()->cannotBeEmpty()->defaultValue(self::DEFAULT_PATH)->end()
-                ->end()
-        ;
+            ->children()
+            ->arrayNode('mappings')->prototype('scalar')
+            ->isRequired()
+            ->cannotBeEmpty()
+            ->end();
 
         return $treeBuilder;
     }
