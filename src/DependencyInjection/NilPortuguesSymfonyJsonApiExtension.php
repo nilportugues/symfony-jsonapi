@@ -50,7 +50,6 @@ class NilPortuguesSymfonyJsonApiExtension extends Extension
         $loadedMappings = [];
 
         foreach ($mappings as $mapping) {
-
             if (0 === strpos($mapping, '@')) {
                 $name = substr($mapping, 1, strpos($mapping, '/') - 1);
 
