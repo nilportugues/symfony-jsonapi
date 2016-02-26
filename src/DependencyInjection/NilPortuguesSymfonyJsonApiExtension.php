@@ -77,11 +77,12 @@ class NilPortuguesSymfonyJsonApiExtension extends Extension
         $bundles = $container->getParameter('kernel.bundles');
 
         if (!isset($bundles[$name])) {
-            return null;
+            return;
         }
 
         $class = $bundles[$name];
         $refClass = new \ReflectionClass($class);
+
         return dirname($refClass->getFileName());
     }
 
