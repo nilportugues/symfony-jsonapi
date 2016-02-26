@@ -72,7 +72,9 @@ It can be also be customized and placed elsewhere by editing the `app/config/con
 # app/config/config.yml
 
 nilportugues_json_api:
-    mappings: "%kernel.root_dir%/config/serializer/"
+    mappings: 
+        - "%kernel.root_dir%/config/serializer/"
+        - @AppBundle/Product/config/Mappings
 
 ```
 
