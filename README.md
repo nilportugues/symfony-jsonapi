@@ -7,6 +7,7 @@ For Symfony 2 and Symfony 3
 [![Latest Stable Version](https://poser.pugx.org/nilportugues/jsonapi-bundle/v/stable)](https://packagist.org/packages/nilportugues/jsonapi-bundle)
 [![Total Downloads](https://poser.pugx.org/nilportugues/jsonapi-bundle/downloads)](https://packagist.org/packages/nilportugues/jsonapi-bundle) 
 [![License](https://poser.pugx.org/nilportugues/jsonapi-bundle/license)](https://packagist.org/packages/nilportugues/jsonapi-bundle) 
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://paypal.me/nilportugues)
 
 - [Installation](#installation)
 - [Usage](#usage)
