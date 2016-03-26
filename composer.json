@@ -19,8 +19,7 @@
     },
     "require": {
         "php": ">=5.5.0",
-        "nilportugues/json-api": "^1.0",
-        "symfony/psr-http-message-bridge": "~0.2"
+        "nilportugues/json-api": "2.1.*"
     },
     "require-dev": {
         "symfony/symfony": "2.*",
