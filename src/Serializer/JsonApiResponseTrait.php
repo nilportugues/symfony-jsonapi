@@ -2,16 +2,26 @@
 
 namespace NilPortugues\Symfony\JsonApiBundle\Serializer;
 
+use NilPortugues\Api\JsonApi\Http\Response\BadRequest;
+use NilPortugues\Api\JsonApi\Http\Response\ResourceCreated;
+use NilPortugues\Api\JsonApi\Http\Response\ResourceDeleted;
+use NilPortugues\Api\JsonApi\Http\Response\ResourceNotFound;
+use NilPortugues\Api\JsonApi\Http\Response\ResourceProcessing;
+use NilPortugues\Api\JsonApi\Http\Response\ResourceUpdated;
+use NilPortugues\Api\JsonApi\Http\Response\Response;
+use NilPortugues\Api\JsonApi\Http\Response\UnprocessableEntity;
+use NilPortugues\Api\JsonApi\Http\Response\UnsupportedAction;
+use Psr\Http\Message\ResponseInterface;
 use Symfony\Bridge\PsrHttpMessage\Factory\HttpFoundationFactory;
 
 trait JsonApiResponseTrait
 {
     /**
-     * @param \Psr\Http\Message\ResponseInterface $response
+     * @param ResponseInterface $response
      *
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return ResponseInterface
      */
-    protected function addHeaders(\Psr\Http\Message\ResponseInterface $response)
+    protected function addHeaders(ResponseInterface $response)
     {
         return $response;
     }
@@ -21,10 +31,10 @@ trait JsonApiResponseTrait
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    private function errorResponse($json)
+    protected function errorResponse($json)
     {
         return (new HttpFoundationFactory())
-            ->createResponse($this->addHeaders(new \NilPortugues\Api\JsonApi\Http\Message\ErrorResponse($json)));
+            ->createResponse($this->addHeaders(new BadRequest($json)));
     }
 
     /**
@@ -32,10 +42,10 @@ trait JsonApiResponseTrait
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    private function resourceCreatedResponse($json)
+    protected function resourceCreatedResponse($json)
     {
         return (new HttpFoundationFactory())
-            ->createResponse($this->addHeaders(new \NilPortugues\Api\JsonApi\Http\Message\ResourceCreatedResponse($json)));
+            ->createResponse($this->addHeaders(new ResourceCreated($json)));
     }
 
     /**
@@ -43,10 +53,10 @@ trait JsonApiResponseTrait
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    private function resourceDeletedResponse($json)
+    protected function resourceDeletedResponse($json)
     {
         return (new HttpFoundationFactory())
-            ->createResponse($this->addHeaders(new \NilPortugues\Api\JsonApi\Http\Message\ResourceDeletedResponse($json)));
+            ->createResponse($this->addHeaders(new ResourceDeleted($json)));
     }
 
     /**
@@ -54,10 +64,10 @@ trait JsonApiResponseTrait
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    private function resourceNotFoundResponse($json)
+    protected function resourceNotFoundResponse($json)
     {
         return (new HttpFoundationFactory())
-            ->createResponse($this->addHeaders(new \NilPortugues\Api\JsonApi\Http\Message\ResourceNotFoundResponse($json)));
+            ->createResponse($this->addHeaders(new ResourceNotFound($json)));
     }
 
     /**
@@ -65,10 +75,10 @@ trait JsonApiResponseTrait
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    private function resourcePatchErrorResponse($json)
+    protected function resourcePatchErrorResponse($json)
     {
         return (new HttpFoundationFactory())
-            ->createResponse($this->addHeaders(new \NilPortugues\Api\JsonApi\Http\Message\ResourcePatchErrorResponse($json)));
+            ->createResponse($this->addHeaders(new UnprocessableEntity($json)));
     }
 
     /**
@@ -76,10 +86,10 @@ trait JsonApiResponseTrait
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    private function resourcePostErrorResponse($json)
+    protected function resourcePostErrorResponse($json)
     {
         return (new HttpFoundationFactory())
-            ->createResponse($this->addHeaders(new \NilPortugues\Api\JsonApi\Http\Message\ResourcePostErrorResponse($json)));
+            ->createResponse($this->addHeaders(new UnprocessableEntity($json)));
     }
 
     /**
@@ -87,10 +97,10 @@ trait JsonApiResponseTrait
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    private function resourceProcessingResponse($json)
+    protected function resourceProcessingResponse($json)
     {
         return (new HttpFoundationFactory())
-            ->createResponse($this->addHeaders(new \NilPortugues\Api\JsonApi\Http\Message\ResourceProcessingResponse($json)));
+            ->createResponse($this->addHeaders(new ResourceProcessing($json)));
     }
 
     /**
@@ -98,10 +108,10 @@ trait JsonApiResponseTrait
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    private function resourceUpdatedResponse($json)
+    protected function resourceUpdatedResponse($json)
     {
         return (new HttpFoundationFactory())
-            ->createResponse($this->addHeaders(new \NilPortugues\Api\JsonApi\Http\Message\ResourceUpdatedResponse($json)));
+            ->createResponse($this->addHeaders(new ResourceUpdated($json)));
     }
 
     /**
@@ -109,10 +119,10 @@ trait JsonApiResponseTrait
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    private function response($json)
+    protected function response($json)
     {
         return (new HttpFoundationFactory())
-            ->createResponse($this->addHeaders(new \NilPortugues\Api\JsonApi\Http\Message\Response($json)));
+            ->createResponse($this->addHeaders(new Response($json)));
     }
 
     /**
@@ -120,9 +130,9 @@ trait JsonApiResponseTrait
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    private function unsupportedActionResponse($json)
+    protected function unsupportedActionResponse($json)
     {
         return (new HttpFoundationFactory())
-            ->createResponse($this->addHeaders(new \NilPortugues\Api\JsonApi\Http\Message\UnsupportedActionResponse($json)));
+            ->createResponse($this->addHeaders(new UnsupportedAction($json)));
     }
 }
