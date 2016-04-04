@@ -11,6 +11,8 @@ use NilPortugues\Api\JsonApi\Http\Response\ResourceUpdated;
 use NilPortugues\Api\JsonApi\Http\Response\Response;
 use NilPortugues\Api\JsonApi\Http\Response\UnprocessableEntity;
 use NilPortugues\Api\JsonApi\Http\Response\UnsupportedAction;
+use NilPortugues\Api\JsonApi\Server\Errors\Error;
+use NilPortugues\Api\JsonApi\Server\Errors\ErrorBag;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Bridge\PsrHttpMessage\Factory\HttpFoundationFactory;
 
@@ -33,8 +35,9 @@ trait JsonApiResponseTrait
      */
     protected function errorResponse($json)
     {
-        return (new HttpFoundationFactory())
-            ->createResponse($this->addHeaders(new BadRequest($json)));
+        $error = new Error('Bad Request', json_decode($json));
+
+        return $this->createResponse(new BadRequest(new ErrorBag([$error])));
     }
 
     /**
@@ -44,8 +47,7 @@ trait JsonApiResponseTrait
      */
     protected function resourceCreatedResponse($json)
     {
-        return (new HttpFoundationFactory())
-            ->createResponse($this->addHeaders(new ResourceCreated($json)));
+        return $this->createResponse(new ResourceCreated($json));
     }
 
     /**
@@ -55,8 +57,7 @@ trait JsonApiResponseTrait
      */
     protected function resourceDeletedResponse($json)
     {
-        return (new HttpFoundationFactory())
-            ->createResponse($this->addHeaders(new ResourceDeleted($json)));
+        return $this->createResponse(new ResourceDeleted($json));
     }
 
     /**
@@ -66,8 +67,7 @@ trait JsonApiResponseTrait
      */
     protected function resourceNotFoundResponse($json)
     {
-        return (new HttpFoundationFactory())
-            ->createResponse($this->addHeaders(new ResourceNotFound($json)));
+        return $this->createResponse(new ResourceNotFound($json));
     }
 
     /**
@@ -77,8 +77,9 @@ trait JsonApiResponseTrait
      */
     protected function resourcePatchErrorResponse($json)
     {
-        return (new HttpFoundationFactory())
-            ->createResponse($this->addHeaders(new UnprocessableEntity($json)));
+        $error = new Error('Unprocessable Entity', json_decode($json));
+
+        return $this->createResponse(new UnprocessableEntity([$error]));
     }
 
     /**
@@ -88,8 +89,9 @@ trait JsonApiResponseTrait
      */
     protected function resourcePostErrorResponse($json)
     {
-        return (new HttpFoundationFactory())
-            ->createResponse($this->addHeaders(new UnprocessableEntity($json)));
+        $error = new Error('Unprocessable Entity', json_decode($json));
+
+        return $this->createResponse(new UnprocessableEntity([$error]));
     }
 
     /**
@@ -99,8 +101,7 @@ trait JsonApiResponseTrait
      */
     protected function resourceProcessingResponse($json)
     {
-        return (new HttpFoundationFactory())
-            ->createResponse($this->addHeaders(new ResourceProcessing($json)));
+        return $this->createResponse(new ResourceProcessing($json));
     }
 
     /**
@@ -110,8 +111,7 @@ trait JsonApiResponseTrait
      */
     protected function resourceUpdatedResponse($json)
     {
-        return (new HttpFoundationFactory())
-            ->createResponse($this->addHeaders(new ResourceUpdated($json)));
+        return $this->createResponse(new ResourceUpdated($json));
     }
 
     /**
@@ -121,8 +121,7 @@ trait JsonApiResponseTrait
      */
     protected function response($json)
     {
-        return (new HttpFoundationFactory())
-            ->createResponse($this->addHeaders(new Response($json)));
+        return $this->createResponse(new Response($json));
     }
 
     /**
@@ -132,7 +131,18 @@ trait JsonApiResponseTrait
      */
     protected function unsupportedActionResponse($json)
     {
-        return (new HttpFoundationFactory())
-            ->createResponse($this->addHeaders(new UnsupportedAction($json)));
+        $error = new Error('Unsupported Action', json_decode($json));
+
+        return $this->createResponse(new UnsupportedAction([$error]));
+    }
+
+    /**
+     * @param $data
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    private function createResponse($data)
+    {
+        return (new HttpFoundationFactory())->createResponse($this->addHeaders($data));
     }
 }

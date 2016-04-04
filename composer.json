@@ -24,8 +24,7 @@
     "require-dev": {
         "symfony/symfony": "2.*",
         "fabpot/php-cs-fixer": "~1.9",
-        "nilportugues/php_backslasher": "~0.2",
-        "mmoreram/php-formatter": "dev-master"
+        "nilportugues/php_backslasher": "~0.2"
     },
     "config": {
         "preferred-install": "dist"
