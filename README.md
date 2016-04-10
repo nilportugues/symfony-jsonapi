@@ -378,43 +378,38 @@ Content-type: application/vnd.api+json
 
 #### Request objects
 
-JSON API comes with a helper Request class, `NilPortugues\Api\JsonApi\Http\Message\Request(ServerRequestInterface $request)`, implementing the PSR-7 Request Interface. Using this request object will provide you access to all the interactions expected in a JSON API:
+JSON API comes with a helper Request class, `NilPortugues\Api\JsonApi\Http\Request\Request(ServerRequestInterface $request)`, implementing the PSR-7 Request Interface. Using this request object will provide you access to all the interactions expected in a JSON API:
 
 ##### JSON API Query Parameters:
 
-- &filter[resource]=field1,field2
-- &include[resource]
-- &include[resource.field1]
-- &sort=field1,-field2
-- &sort=-field1,field2
-- &page[number]
-- &page[limit]
-- &page[cursor]
-- &page[offset]
-- &page[size]
+- **&fields[resource]=field1,field2** will only show the specified fields for a given resource.
+- **&include=resource** show the relationship for a given resource.
+- **&include=resource.resource2** show the relationship field for those depending on resource2.
+- **&sort=field1,-field2** sort by field2 as DESC and field1 as ASC.
+- **&sort=-field1,field2** sort by field1 as DESC and field2 as ASC.
+- **&page[number]** will return the current page elements in a *page-based* pagination strategy.
+- **&page[size]** will return the total amout of elements in a *page-based* pagination strategy.
+- **&page[limit]** will return the limit in a *offset-based* pagination strategy.
+- **&page[offset]** will return the offset value in a *offset-based* pagination strategy.
+- **&page[cursor]** will return the cursor value  in a *cursor-based* pagination strategy.
+- **&filter** will return data passed in the filter param.
 
 
-##### NilPortugues\Api\JsonApi\Http\Message\Request
+##### NilPortugues\Api\JsonApi\Http\Request\Request
 
 Given the query parameters listed above, Request implements helper methods that parse and return data already prepared.
 
 ```php
-namespace NilPortugues\Api\JsonApi\Http\Message;
+namespace \NilPortugues\Api\JsonApi\Http\Request;
 
-final class Request
+class Request
 {
-    public function __construct(ServerRequestInterface $request) { ... }
-    public function getQueryParam($name, $default = null) { ... }
-    public function getIncludedRelationships($baseRelationshipPath) { ... }
-    public function getSortFields() { ... }
-    public function getAttribute($name, $default = null) { ... }
-    public function getSortDirection() { ... }
-    public function getPageNumber() { ... }
-    public function getPageLimit() { ... }
-    public function getPageOffset() { ... }
-    public function getPageSize() { ... }
-    public function getPageCursor() { ... }
-    public function getFilters() { ... }
+  public function __construct(ServerRequestInterface $request = null) { ... }
+  public function getIncludedRelationships() { ... }
+  public function getSort() { ... }
+  public function getPage() { ... }
+  public function getFilters() { ... }
+  public function getFields() { ... }
 }
 ```
 
