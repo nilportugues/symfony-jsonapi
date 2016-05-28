@@ -8,14 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace NilPortugues\Symfony\JsonApiBundle\Serializer;
 
 use NilPortugues\Api\JsonApi\JsonApiTransformer;
 use NilPortugues\Api\Mapping\Mapping;
 use NilPortugues\Serializer\DeepCopySerializer;
 use ReflectionClass;
+use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
-use Symfony\Component\Security\Acl\Exception\Exception;
+use Exception;
 
 /**
  * Class JsonApiSerializer.
@@ -92,7 +94,7 @@ class JsonApiSerializer extends DeepCopySerializer
      *
      * @return mixed
      *
-     * @throws \RuntimeException
+     * @throws RuntimeException
      */
     private function getUrlPattern(Router $router, $routeNameFromMappingFile)
     {
@@ -102,8 +104,8 @@ class JsonApiSerializer extends DeepCopySerializer
                 if (empty($route)) {
                     throw new Exception();
                 }
-            } catch (\Exception $e) {
-                throw new \RuntimeException(
+            } catch (Exception $e) {
+                throw new RuntimeException(
                    \sprintf('Route \'%s\' has not been defined as a Symfony route.', $routeNameFromMappingFile)
                );
             }
