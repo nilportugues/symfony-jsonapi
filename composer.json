@@ -2,7 +2,7 @@
     "name": "nilportugues/jsonapi-bundle",
     "homepage": "http://nilportugues.com",
     "type": "library",
-    "description": "Symfony 2 JSON API Transformer Package",
+    "description": "Symfony 2 & 3 JSON API Transformer Package",
     "keywords": ["sf2", "symfony", "symfony2", "symfony3", "lumen", "json", "api", "jsonapi", "serializer", "transformer", "psr7", "response"],
     "license": "MIT",
     "authors": [
@@ -19,11 +19,11 @@
     },
     "require": {
         "php": ">=5.5.0",
-        "nilportugues/json-api": "2.2.*"
+        "nilportugues/json-api": "^2.3"
     },
     "require-dev": {
         "symfony/symfony": "2.*",
-        "fabpot/php-cs-fixer": "~1.9",
+        "friendsofphp/php-cs-fixer": "~1.9",
         "nilportugues/php_backslasher": "~0.2"
     },
     "config": {
