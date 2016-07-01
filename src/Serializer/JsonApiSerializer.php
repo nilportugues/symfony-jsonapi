@@ -13,16 +13,16 @@ namespace NilPortugues\Symfony\JsonApiBundle\Serializer;
 
 use NilPortugues\Api\JsonApi\JsonApiTransformer;
 use NilPortugues\Api\Mapping\Mapping;
-use NilPortugues\Serializer\DeepCopySerializer;
 use ReflectionClass;
 use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Exception;
 
 /**
- * Class JsonApiSerializer.
+ * Class JsonApiSerializer
+ * @package NilPortugues\Symfony\JsonApiBundle\Serializer
  */
-class JsonApiSerializer extends DeepCopySerializer
+class JsonApiSerializer extends \NilPortugues\Api\JsonApi\JsonApiSerializer
 {
     /**
      * @param JsonApiTransformer $transformer
