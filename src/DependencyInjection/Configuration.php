@@ -22,10 +22,19 @@ class Configuration implements ConfigurationInterface
 
         $treeBuilder
             ->root('nilportugues_json_api')
-            ->children()
-            ->arrayNode('mappings')->prototype('scalar')
-            ->isRequired()
-            ->cannotBeEmpty()
+                ->children()
+                    ->arrayNode('mappings')
+                        ->prototype('scalar')
+                        ->isRequired()
+                        ->cannotBeEmpty()
+                        ->end()
+                    ->end()
+                    ->scalarNode('attributes_case')
+                    ->defaultValue('snake_case')
+                    ->validate()
+                        ->ifNotInArray(['snake_case', 'keep_case']) // @TODO: implement forcing camelCase and hypen-case.
+                        ->thenInvalid('Invalid case setting %s, valid values are: snake_case, keep_case')
+                ->end()
             ->end();
 
         return $treeBuilder;
