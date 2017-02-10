@@ -28,6 +28,7 @@ class NilPortuguesSymfonyJsonApiExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
         $this->setMappings($container, $config);
+        $this->setAttributesCase($container, $config);
     }
 
     /**
@@ -70,6 +71,15 @@ class NilPortuguesSymfonyJsonApiExtension extends Extension
         }
 
         return [$loadedMappings];
+    }
+
+    /**
+     * @param ContainerBuilder $container
+     * @param                  $config
+     */
+    private function setAttributesCase(ContainerBuilder $container, $config)
+    {
+        $container->setParameter('nil_portugues.api.attributes_case', $config['attributes_case']);
     }
 
     private function resolveBundle(ContainerBuilder $container, $name)
