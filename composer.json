@@ -22,9 +22,9 @@
         "nilportugues/json-api": "^2.4"
     },
     "require-dev": {
-        "symfony/symfony": "2.*",
-        "friendsofphp/php-cs-fixer": "~1.9",
-        "nilportugues/php_backslasher": "~0.2"
+        "symfony/symfony": "^2.0|^3.0",
+        "friendsofphp/php-cs-fixer": "^1.9",
+        "nilportugues/php_backslasher": "^0.2"
     },
     "config": {
         "preferred-install": "dist"
