@@ -59,6 +59,9 @@ class JsonApiSerializer extends \NilPortugues\Api\JsonApi\JsonApiSerializer
             $mappingProperty = $mappingClass->getProperty('otherUrls');
             $mappingProperty->setAccessible(true);
             $otherUrls = $mappingProperty->getValue($mapping);
+            if (empty($otherUrls)) {
+              $otherUrls = [];
+            }
             foreach ($otherUrls as &$url) {
                 $url = $this->getUrlPattern($router, $url, $baseUrl);
             }
@@ -67,6 +70,9 @@ class JsonApiSerializer extends \NilPortugues\Api\JsonApi\JsonApiSerializer
             $mappingProperty = $mappingClass->getProperty('relationshipSelfUrl');
             $mappingProperty->setAccessible(true);
             $relationshipSelfUrl = $mappingProperty->getValue($mapping);
+            if (empty($relationshipSelfUrl) {
+              $relationshipSelfUrl = [];
+            }
             foreach ($relationshipSelfUrl as &$urlMember) {
                 foreach ($urlMember as &$url) {
                     $url = $this->getUrlPattern($router, $url, $baseUrl);
