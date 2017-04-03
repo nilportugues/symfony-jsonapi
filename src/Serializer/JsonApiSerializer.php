@@ -70,7 +70,7 @@ class JsonApiSerializer extends \NilPortugues\Api\JsonApi\JsonApiSerializer
             $mappingProperty = $mappingClass->getProperty('relationshipSelfUrl');
             $mappingProperty->setAccessible(true);
             $relationshipSelfUrl = $mappingProperty->getValue($mapping);
-            if (empty($relationshipSelfUrl) {
+            if (empty($relationshipSelfUrl)) {
                 $relationshipSelfUrl = [];
             }
             foreach ($relationshipSelfUrl as &$urlMember) {
