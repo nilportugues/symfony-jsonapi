@@ -7,6 +7,7 @@ services:
          class: NilPortugues\Api\JsonApi\JsonApiTransformer
          arguments:
             - "@nil_portugues.api.mapping.mapper"
+            - "%nil_portugues.api.attributes_case%"
 
     nil_portugues.serializer.json_api_serializer:
          class: NilPortugues\Symfony\JsonApiBundle\Serializer\JsonApiSerializer
