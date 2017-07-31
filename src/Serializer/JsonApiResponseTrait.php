@@ -67,7 +67,9 @@ trait JsonApiResponseTrait
      */
     protected function resourceNotFoundResponse($json)
     {
-        return $this->createResponse(new ResourceNotFound($json));
+        $error = new Error('Resource not Found', json_decode($json));
+
+        return $this->createResponse(new ResourceNotFound(new ErrorBag([$error])));
     }
 
     /**
